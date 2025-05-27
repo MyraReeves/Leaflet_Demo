@@ -8,3 +8,12 @@ body {
     height: 100vh;
     width: 100%;
 }
+
+.bold {
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+.alertRed {
+    color: red;
+}
