@@ -101,7 +101,7 @@
         };
 
         // Layer Control Panel:
-        const layerControl = L.control.layers(baseMaps, overlays).addTo(map);
+        const layerControl = L.control.layers(baseMaps, overlays, {collapsed: false}).addTo(map);
 
     </script>
 </body>
