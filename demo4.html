@@ -27,22 +27,36 @@
         const HenryJacksonVC = L.marker([46.786118352861656, -121.73601632703395],
             {title:'Henry M. Jackson Memorial Visitor Center', alt: 'Henry M. Jackson Memorial Visitor Center'}
         );
-
         const SunriseVC = L.marker([46.914601817289736, -121.64382392595436],
             {alt: 'Sunrise Visitor Center'}
-        )
-        
+        );
         const OhanapecoshVC = L.marker([46.743488451188846, -121.46876168112745],
             {alt: 'Ohanapecos Visitor Center'}
-        )
+        );
 
-        HenryJacksonVC.addTo(map)
-        SunriseVC.addTo(map)
-        OhanapecoshVC.addTo(map)
+        HenryJacksonVC.addTo(map);
 
-        L.marker([46.755896429988724, -121.55806898787331]).addTo(map) // ENTRANCE = Stevens Canyon
-        L.marker([46.99521086725334, -121.91586127251583]).addTo(map)  // ENTRANCE = Carbon River
-        L.marker([46.741036415175124, -121.91659338787417]).addTo(map) // ENTRANCE = Nisqually
+        OhanapecoshVC.addTo(map).bindPopup('<span class="bold">Ohanapecos Visitor Center</span> <br><span class="alertRed">Closed Summer 2025 <br>Re-opens June 2026');
+
+        SunriseVC.addTo(map).bindPopup('<b>Sunrise Visitor Center</b> <br>Open July - September<br>9 AM - 5 PM');
+        
+
+        // ENTRANCE MARKERS:
+        const stevensEntrance = L.marker([46.755896429988724, -121.55806898787331],
+            {alt: 'Stevens Canyon Entrance'}
+        );
+        const carbonEntrance = L.marker([46.99521086725334, -121.91586127251583],
+            {alt: 'Carbon River Entrance'}
+        );
+        const nisquallyEntrance = L.marker([46.741036415175124, -121.91659338787417],
+            {alt: 'Nisqually Entrance'}
+        );
+
+        stevensEntrance.addTo(map).bindPopup('<span class="bold">Stevens Canyon Entrance</span> <br><span class="alertRed">Only open during Summer</span>');
+
+        carbonEntrance.addTo(map);
+
+        nisquallyEntrance.addTo(map).bindPopup('<span class="bold">Nisqually Entrance</span> <br>Latitude: ' + nisquallyEntrance.getLatLng().lat + '<br>Longitude: '+ nisquallyEntrance.getLatLng().lng); 
         
 
     </script>
