@@ -1,2 +1,3 @@
-# Leaflet_Demo
-Demonstration for JS330 course at UW
+# Leaflet Demo
+
+This repo was created for demonstration purposes for assignment #9 in the JS330 course at UW
