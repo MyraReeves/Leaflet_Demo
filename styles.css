@@ -17,3 +17,16 @@ body {
 .alertRed {
     color: red;
 }
+
+.coordinates {
+    position: absolute;
+    background-color: bisque;
+    color: black;
+    border: black solid 4px;
+    padding: 5px;
+    cursor: crosshair;
+    font-size: larger;
+    bottom: 0;
+    width: 30%;
+    text-align: center;
+}
