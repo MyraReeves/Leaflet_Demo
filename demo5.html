@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaflet Demo 5 = Layers</title>
+    <title>Example 5 = Layers</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -33,6 +33,14 @@
         	attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
 	        maxZoom: 16
         });
+
+        // GOOGLE STREET MAPS:
+        const streetMap = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3'],
+            attribution: 'Tiles &copy; Google Maps',
+        });
+
 
 
         //////////////////////////////
@@ -80,6 +88,7 @@
             "Topo Map": openTopoMap,
             "Satellite": esri_WorldImagery,
             "National Geographic": esri_NatGeoWorldMap,
+            "Roads & Trails": streetMap,
         };
         
         const visitorCenters = L.layerGroup([henryJacksonVC.bindPopup('<span class="bold">Henry M. Jackson Memorial Visitor Center</span> <br>Open 10:00 am - 4:30 pm daily'), sunriseVC.bindPopup('<span class="bold">Sunrise Visitor Center</span> <br>Open July - September<br>9 AM - 5 PM'), ohanapecoshVC.bindPopup('<span class="bold">Ohanapecos Visitor Center</span> <br><span class="alertRed">Closed Summer 2025 <br>Re-opens June 2026').openPopup()]);
