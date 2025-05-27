@@ -14,15 +14,20 @@
     
     <div id = "map1"></div>
     <script>
-        var map = L.map('map1').setView([51.505, -0.09], 13);
+        // INITIALIZE THE MAP:
+        const map = L.map('map1').setView([51.505, -0.09], 13);             // setView[Latitude/Longitude], default amount to zoom in
 
-        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+        // SET THE OPEN STREET MAP LAYER:
+        const openStreetMap = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         });
-        osm.addTo(map);
+        openStreetMap.addTo(map);
 
+
+        // ADD A MARKER TO THE MAP:
         L.marker([51.5, -0.09]).addTo(map)
-            .bindPopup('Example marker')
+            .bindPopup('This is an example marker')
             .openPopup();
     </script>
 </body>
