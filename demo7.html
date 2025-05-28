@@ -1,3 +1,5 @@
+<!-- This file demonstrates drawing simple shapes (circles, polygons, etc.) onto the map without GeoJSON data.  The relevant code is on line 86.  Line 111 adds that red shaded circle to the marker choices menu-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,27 +20,23 @@
 
 
     <script>
-        const map = L.map('map1').setView([46.8543443, -121.7112362], 11);             // Rainier National Park
+        const map = L.map('map1').setView([46.8543443, -121.7112362], 11);
         
-        // TOPO MAP OPTION:
+        ////////////
+        // MAPS: //
+        //////////
         const openTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
 	        maxZoom: 17,
 	        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
         });
         openTopoMap.addTo(map);
-
-        // SATELLITE MAP:
         const esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
         });
-        
-        // NATIONAL GEOGRAPHIC MAP:
         const esri_NatGeoWorldMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
         	attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
 	        maxZoom: 16
         });
-
-        // GOOGLE STREET MAPS:
         const streetMap = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
             maxZoom: 20,
             subdomains:['mt0','mt1','mt2','mt3'],
@@ -71,8 +69,6 @@
             iconAnchor: [15, 35],       // Controls how centered on the coordinate point the icon is
             popupAnchor: [5, -40]       // Controls the offset of the pop-up window
         })
-
-
         const stevensEntrance = L.marker([46.755896429988724, -121.55806898787331],
             {title: 'Stevens Canyon Entrance', alt: 'Stevens Canyon Entrance', icon: doorIcon}
         );
@@ -92,9 +88,9 @@
 
 
 
-        //////////////
-        // LAYERS: //
         ////////////
+        // MAPS: //
+        //////////
         const baseMaps = {
             "Topo Map": openTopoMap,
             "Satellite": esri_WorldImagery,
@@ -102,6 +98,9 @@
             "Roads & Trails": streetMap,
         };
         
+        ///////////////
+        // MARKERS: //
+        /////////////
         const visitorCenters = L.layerGroup([henryJacksonVC.bindPopup('<span class="bold">Henry M. Jackson Memorial Visitor Center</span> <br>Open 10:00 am - 4:30 pm daily'), sunriseVC.bindPopup('<span class="bold">Sunrise Visitor Center</span> <br>Open July - September<br>9 AM - 5 PM'), ohanapecoshVC.bindPopup('<span class="bold">Ohanapecos Visitor Center</span> <br><span class="alertRed">Closed Summer 2025 <br>Re-opens June 2026')]);
 
         const parkEntrances = L.layerGroup([nisquallyEntrance.bindPopup('<span class="bold">Nisqually Entrance</span> <br>Open year-round'), carbonEntrance.bindPopup('<span class="bold">Carbon River Entrance</span> <br><span class="alertRed">State Route 165 Carbon River/Fairfax Bridge PERMANENTLY CLOSED DUE TO SAFETY<br><b>No vehicle, bicycle, nor pedestrian access</b></span>'), stevensEntrance.bindPopup('<span class="bold">Stevens Canyon Entrance</span> <br><span class="alertRed">Only open during Summer</span>')]);
@@ -109,17 +108,19 @@
         const overlays = {
             "Visitor Centers": visitorCenters,
             "Park Entrances": parkEntrances,
-            "Closed Area": closedArea,
+            "Closed Area": closedArea,              // Ability added to view the red circle drawn in the code above
         };
 
-        // Layer Control Panel:
+        ///////////////////////////
+        // Layer Control Panel: //
+        /////////////////////////
         const layerControl = L.control.layers(baseMaps, overlays).addTo(map);
 
 
 
-        //////////////
-        // EVENTS: //
-        ////////////
+        ////////////////////////////////////////////
+        // MOUSE-OVER COORDINATE LOCATION EVENT: //
+        //////////////////////////////////////////
         map.on('mousemove', function (e) {
             document.getElementsByClassName('coordinates')[0].innerHTML= '<b>Latitude:</b> ' + e.latlng.lat + '&emsp; <b>Longitude:</b> ' + e.latlng.lng;
         })
