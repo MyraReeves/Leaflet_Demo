@@ -34,6 +34,7 @@
         ////////////////////////////
         const henryJacksonVC = L.marker([46.786118352861656, -121.73601632703395],
             {title:'Henry M. Jackson Memorial Visitor Center', alt: 'Henry M. Jackson Memorial Visitor Center'}
+            // This marker demonstrated a hover-over title WITHOUT any popup info available. Hover-over titles were added to all markers inside of all future files for better screenreader accessibility.
         );
         const sunriseVC = L.marker([46.914601817289736, -121.64382392595436],
             {alt: 'Sunrise Visitor Center'}
@@ -42,7 +43,7 @@
             {alt: 'Ohanapecos Visitor Center'}
         );
 
-        henryJacksonVC.addTo(map);
+        henryJacksonVC.addTo(map);  // No popup info added this time.  Future files had popup info added for this marker.
 
         ohanapecoshVC.addTo(map).bindPopup('<span class="bold">Ohanapecos Visitor Center</span> <br><span class="alertRed">Closed Summer 2025 <br>Re-opens June 2026').openPopup();
 
