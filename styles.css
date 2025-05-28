@@ -32,7 +32,7 @@ body {
 }
 
 
-/* For demonstration purposes of changing styling of all pin pop-up windows: */
+/* For demonstration purposes of showing how to change styling of ALL marker pop-up windows: */
 /* .leaflet-popup-content-wrapper, .leaflet-popup-tip {
     background-color: rgb(150, 247, 247);
     color:purple;
