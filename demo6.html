@@ -116,6 +116,16 @@
             document.getElementsByClassName('coordinates')[0].innerHTML= '<b>Latitude:</b> ' + e.latlng.lat + '&emsp; <b>Longitude:</b> ' + e.latlng.lng;
         })
 
+
+        /////////////
+        // SCALE: //
+        ///////////
+        L.control.scale({
+            imperial: true,
+            metric: true,
+            position: 'topleft'
+        }).addTo(map)
+
     </script>
 </body>
 </html>
